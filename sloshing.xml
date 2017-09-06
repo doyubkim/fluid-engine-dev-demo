@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene version="0.5.0">
+	<integrator type="adaptive">
+		<integrator type="path">
+			<integer name="maxDepth" value="10"/>
+		</integrator>
+	</integrator>
+
+	<sensor type="perspective">
+		<float name="focusDistance" value="2.8591"/>
+		<float name="fov" value="28"/>
+		<string name="fovAxis" value="x"/>
+		<transform name="toWorld">
+			<scale x="-1"/>
+
+			<lookat target="-0.750592, 1.07887, -0.683639" origin="-1.42797, 1.41984, -1.33549" up="0.229972, 0.939835, 0.252633"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="16"/>
+		</sampler>
+
+		<film type="ldrfilm">
+			<boolean name="banner" value="false"/>
+			<float name="exposure" value="0"/>
+			<float name="gamma" value="-1"/>
+			<integer name="height" value="1024"/>
+			<string name="pixelFormat" value="rgb"/>
+			<string name="toneMappingMethod" value="gamma"/>
+			<string name="tonemapMethod" value="gamma"/>
+			<integer name="width" value="1024"/>
+
+			<rfilter type="catmullrom"/>
+		</film>
+	</sensor>
+
+	<emitter type="envmap" id="envmapLight">
+		<string name="filename" value="textures/envmap.exr"/>
+		<transform name="toWorld">
+			<rotate y="1" angle="75"/>
+		</transform>
+		<float name="scale" value="2.75"/>
+	</emitter>
+
+	<bsdf type="diffuse" id="diffmat">
+		<rgb name="reflectance" value="0.7 0.7 0.6"/>
+	</bsdf>
+
+	<shape type="obj" id="water">
+		<string name="filename" value="$objname"/>
+		<!-- <string name="filename" value="100_ani_0.6,0.9.obj"/> -->
+		<integer name="shapeIndex" value="2"/>
+		<transform name="toWorld"/>
+
+		<bsdf type="plastic">
+			<rgb name="diffuseReflectance" value="0.2 0.3 0.9"/>
+			<float name="intIOR" value="1.5"/>
+		</bsdf>
+	</shape>
+
+	<shape type="serialized" id="floor">
+		<string name="filename" value="objects/floor.serialized"/>
+		<integer name="shapeIndex" value="0"/>
+		<transform name="toWorld">
+			<rotate x="1" angle="90"/>
+			<rotate z="1" angle="180"/>
+			<translate x="0.5" y="-3" z="0.5"/>
+			<scale x="30" y="1" z="30"/>
+		</transform>
+
+		<ref name="bsdf" id="diffmat"/>
+	</shape>
+</scene>
