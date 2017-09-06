@@ -2,19 +2,19 @@
 
 <scene version="0.5.0">
 	<integrator type="adaptive">
-		<integrator type="volpath_simple">
+		<integrator type="path">
 			<integer name="maxDepth" value="10"/>
 		</integrator>
 	</integrator>
 
 	<sensor type="perspective">
-		<float name="focusDistance" value="2.50327"/>
-		<float name="fov" value="29"/>
+		<float name="focusDistance" value="2.8591"/>
+		<float name="fov" value="28"/>
 		<string name="fovAxis" value="x"/>
 		<transform name="toWorld">
 			<scale x="-1"/>
 
-			<lookat target="1.45774, 1.15568, 1.43175" origin="2.0666, 1.65403, 2.04895" up="-0.35313, 0.866966, -0.351666"/>
+			<lookat target="-0.750592, 1.07887, -0.683639" origin="-1.42797, 1.41984, -1.33549" up="0.229972, 0.939835, 0.252633"/>
 		</transform>
 
 		<sampler type="independent">
@@ -44,23 +44,19 @@
 	</emitter>
 
 	<bsdf type="diffuse" id="diffmat">
-		<rgb name="reflectance" value="0.4 0.4 0.3"/>
+		<rgb name="reflectance" value="0.7 0.7 0.6"/>
 	</bsdf>
 
 	<shape type="obj" id="water">
-		<string name="filename" value="data/hybrid_liquid_sim_demo6/frame_000099.obj"/>
+		<string name="filename" value="$objname"/>
+		<!-- <string name="filename" value="100_ani_0.6,0.9.obj"/> -->
 		<integer name="shapeIndex" value="2"/>
 		<transform name="toWorld"/>
 
-		<bsdf type="dielectric">
-			<string name="intIOR" value="water"/>
-			<string name="extIOR" value="air"/>
+		<bsdf type="plastic">
+			<rgb name="diffuseReflectance" value="0.2 0.3 0.9"/>
+			<float name="intIOR" value="1.5"/>
 		</bsdf>
-
-		<medium name="interior" type="homogeneous">
-			<rgb name="sigmaS" value="0, 0, 0"/>
-			<rgb name="sigmaA" value="12, 11, 9"/>
-		</medium>
 	</shape>
 
 	<shape type="serialized" id="floor">
