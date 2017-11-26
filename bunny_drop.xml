@@ -49,7 +49,6 @@
 
 	<shape type="obj" id="water">
 		<string name="filename" value="data/level_set_liquid_sim_demo4/frame_000050.obj"/>
-		<integer name="shapeIndex" value="2"/>
 		<transform name="toWorld"/>
 
 		<bsdf type="dielectric">
