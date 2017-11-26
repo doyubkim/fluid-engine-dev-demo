@@ -49,8 +49,7 @@
 
 	<shape type="obj" id="water">
 		<string name="filename" value="$objname"/>
-		<!-- <string name="filename" value="100_ani_0.6,0.9.obj"/> -->
-		<integer name="shapeIndex" value="2"/>
+		<!-- <string name="filename" value="data/hybrid_liquid_sim_demo6/100_ani_0.6,0.9.obj"/> -->
 		<transform name="toWorld"/>
 
 		<bsdf type="plastic">
